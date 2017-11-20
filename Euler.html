@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>euler.js</title>
+</header>
+<body>
+    <div id="solutions">
+    </div>
+    <div id="data" style="display: none;">
+    </div>
+    <script>
+      // utility functions
+      function isDivisible(num, divisor){
+        return num % divisor == 0;
+      }
+      function fib(n){
+        if (n<= 1) {
+          return 1;
+        } else {
+          return fib(n-1) + fib (n-2);
+        }
+      }
+
+      function primeFactors(num){
+        var factors = [];
+        for (var i = 2; i <= num; i++) {
+          while(isDivisible(num, i)){
+          factors.push(i);
+          num =num / i;
+        }
+        }
+        return factors;
+      }
+
+      function palindromify(){
+        var pal =["8907"];
+        //JSON.stringify(num);
+        //pal.push(num);
+        //pal.split();
+        //pal.reverse();
+        //pal.join();
+        //Number(pal);
+        return pal;
+      }
+
+    </script>
+    <script>
+      var problemTracker = [];
+
+      //all problems are solved below
+      // some data can be found in the data div
+
+      problemTracker[4] = function (){
+      palindromify();
+
+      }
+
+
+      problemTracker[3] = function (){
+      var bigNumber = 600851475143;
+      var factors = primeFactors(bigNumber);
+      return factors[factors.length - 1];
+      }
+
+
+
+      problemTracker[2] = function (){
+        var sum = 0;
+        for(var i=0; i < 100000; i++){
+          var f = fib(i);
+          if(f>4000000){
+            return sum;
+          }
+          if(isDivisible(f,2)){
+            sum += f;
+          }
+        }
+      };
+
+
+      problemTracker[1] = function (){
+        var sum = 0;
+        for (var i = 0; i < 1000; i++){
+          if (isDivisible(i, 3) || isDivisible(i, 5)){
+            sum += i;
+          }
+        }
+        return sum;
+      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      var solutionDiv = document.getElementById('solutions');
+       for (var i = 1; i < problemTracker.length; i++) {
+           var newDiv = document.createElement('div');
+           var newLabel = document.createElement('label');
+           var newInput = document.createElement('input');
+           var newButton = document.createElement('button');
+           var newSpan = document.createElement('span');
+           var dataDiv = document.getElementById('d' + i);
+           var data = dataDiv ? dataDiv.textContent : null;
+           newButton.onclick = (function (probNum, input, datas) {
+               return function () {
+                   input.value = problemTracker[probNum](datas);
+               }
+           })(i, newInput, data);
+           newButton.appendChild(document.createTextNode('solve'));
+           newInput.readOnly = true;
+           newLabel.appendChild(document.createTextNode('Solution ' + i));
+           newLabel.appendChild(newInput);
+           newDiv.appendChild(newLabel);
+           if (problemTracker[i].skipped) {
+               newDiv.appendChild(document.createTextNode('*skipped'));
+           } else {
+               newDiv.appendChild(newButton);
+           }
+           newDiv.appendChild(newSpan);
+           solutionDiv.appendChild(newDiv);
+       }
+    </script>
+</body>
+</html>
