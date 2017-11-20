@@ -32,15 +32,15 @@
         return factors;
       }
 
-      function palindromify(){
-        var pal =["8907"];
-        //JSON.stringify(num);
-        //pal.push(num);
-        //pal.split();
-        //pal.reverse();
-        //pal.join();
-        //Number(pal);
+      function palindromify(num){
+
+        var pal = JSON.stringify(num);
+        pal = pal.split("");
+        pal.reverse();
+        pal = pal.join("");
+        pal = Number(pal);
         return pal;
+
       }
 
     </script>
@@ -51,7 +51,24 @@
       // some data can be found in the data div
 
       problemTracker[4] = function (){
-      palindromify();
+      for(var i= 999; i>=850; i--){
+        for(var j = 999; j>= 850; j--){
+         //var palArray = [];
+          var proSum = i*j;
+        //palArray.push(proSum);
+          //console.log(palArray);
+
+          var palSum = palindromify(proSum);
+          //console.log(palSum);
+          if(proSum === palSum){
+             return palSum;
+          }
+        }
+
+
+
+      }
+
 
       }
 
