@@ -11,7 +11,7 @@
     <script>
       // utility functions
       function isDivisible(num, divisor){
-        return num % divisor == 0;
+          return num % divisor == 0;
       }
       function fib(n){
         if (n<= 1) {
@@ -49,6 +49,29 @@
 
       //all problems are solved below
       // some data can be found in the data div
+      problemTracker[6] = function (){
+
+      }
+
+      problemTracker[5] = function (){
+    let found = false;
+    let number = 1;
+    while (!found) {
+        for (let i = 2; i < 20; i++) {
+            if (isDivisible(number, i)) {
+                continue;
+            } else {
+                number++;
+                i = 2;
+            }
+        }
+        found = true;
+    }
+    return number;
+
+      }
+
+
 
       problemTracker[4] = function (){
       for(var i= 999; i>=850; i--){
