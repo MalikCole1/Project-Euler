@@ -43,14 +43,65 @@
 
       }
 
+      function getSum(total, num) {
+    return total + num;
+}
+      function isPrime(numm){
+         if(numm <=1) {
+           return false;
+         }
+        if(numm == 2){
+          return true;
+        }
+        if(numm % 2 == 0){
+           return false;
+           }
+
+        var counter = 3;
+
+        while ((counter * counter) <= numm){
+          if(numm % counter == 0){
+             return false;
+             }else{
+               counter += 2;
+             }
+        }
+          return true;
+      }
+
     </script>
     <script>
       var problemTracker = [];
 
       //all problems are solved below
       // some data can be found in the data div
-      problemTracker[6] = function (){
+      problemTracker[7] = function (){
+        var numPrimes = 1;
+        var numm = 1;
 
+        while(numPrimes <= 10001){
+          numm = numm + 2;
+          if(isPrime(numm)){
+             numPrimes++;
+             }
+
+        }
+
+        return numm;
+
+      }
+
+      problemTracker[6] = function (){
+        var sqSum = 0;
+        var Sum = 0;
+        for(var i = 1; i <= 100; i++){ 
+          sqSum += i;
+          Sum += (i*i);
+                                     }
+
+
+        //console.log(Sum, (sqSum * sqSum));
+        return (sqSum*sqSum) - Sum;
       }
 
       problemTracker[5] = function (){
